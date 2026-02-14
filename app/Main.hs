@@ -41,7 +41,7 @@ data Context = Context
 
 main :: IO ()
 main = do
-    cmd <- execParser opts
+    cmd <- customExecParser (prefs (showHelpOnEmpty <> showHelpOnError)) opts
     case cmd of
         ReplaceTable f from to dCat dSch -> handleReplaceTable f from to dCat dSch
         ReplaceField f from to dCat dSch -> handleReplaceField f from to dCat dSch
